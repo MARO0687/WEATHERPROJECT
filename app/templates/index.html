@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #4ECDC4, #556270);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px; /* Reducido aún más el tamaño máximo */
+            margin: 20px auto;
+            padding: 15px; /* Ajustado el padding */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid blue; /* Contorno azul */
+        }
+
+        h1 {
+            font-size: 1.6em; /* Reducido el tamaño del título */
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 15px; /* Reducido el margen entre elementos */
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            font-size: 14px;
+            width: 80%;
+            max-width: 270px; /* Reducido el tamaño máximo */
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-right: 10px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4ECDC4;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            padding: 8px 16px; /* Reducido el tamaño del padding */
+            font-size: 14px;
+            background-color: #4ECDC4;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #556270;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 12px; /* Reducido el padding */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Reducido el tamaño máximo */
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid blue; /* Contorno azul */
+        }
+
+        .weather-info h2 {
+            font-size: 1.3em; /* Reducido el tamaño del título */
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .weather-info p {
+            font-size: 0.95em; /* Reducido el tamaño de la fuente */
+            margin: 6px 0;
+            color: #333;
+        }
+
+        .weather-info img {
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .weather-info .generated-image {
+            margin-top: 15px;
+        }
+
+        .weather-info img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Responsive para pantallas pequeñas */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 1.5em; /* Título más pequeño */
+            }
+
+            .container {
+                padding: 12px;
+                margin: 10px;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                max-width: none;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                font-size: 13px;
+            }
+
+            .weather-info h2 {
+                font-size: 1.2em;
+            }
+
+            .weather-info p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Consultar Clima</h1>
+        <form method="POST">
+            <input type="text" name="ciudad" placeholder="Ingresa el nombre de una ciudad" required>
+            <input type="submit" value="Consultar">
+        </form>
+
+        {% if ciudad %}
+        <div class="weather-info">
+            <h2>Clima en {{ ciudad }}</h2>
+            <p><strong>Descripción:</strong> {{ descripcion }}</p>
+            <p><strong>Temperatura:</strong> {{ temperatura }}°C</p>
+            <img src="{{ icon }}" alt="Ícono del clima" width="100" height="100"> <!-- Ícono más pequeño -->
+            <div class="generated-image">
+                <p><strong>Imagen generada:</strong></p>
+                <img src="{{ imagen }}" alt="Imagen del clima generada">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

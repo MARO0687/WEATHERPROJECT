@@ -1,0 +1,31 @@
+services:
+  web:
+    container_name: weatherproyecto-flask
+    hostname: weatherproyecto-flask
+    build: ./app
+    entrypoint:
+      - flask
+      - run
+      - --host=0.0.0.0
+      - --port=5000
+    environment:
+      FLASK_DEBUG: 1
+      FLASK_RUN_HOST: 0.0.0.0
+      TEMPLATES_AUTO_RELOAD: 'True'
+      FLASK_ENV: development
+      MAGICK_HOME: /usr
+    env_file:
+      - .env  # Esto carga las variables del archivo .env
+    ports:
+      - '8081:5000'
+    volumes:
+      - ./app:/app
+    networks:
+      - default
+
+volumes:
+  persistent:
+
+networks:
+  default:
+    driver: bridge

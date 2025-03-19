@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": -115,
+        "lat": 30
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "cielo claro",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 20.44,
+        "feels_like": 18.83,
+        "temp_min": 20.44,
+        "temp_max": 20.44,
+        "pressure": 1021,
+        "humidity": 11,
+        "sea_level": 1021,
+        "grnd_level": 948
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 11.48,
+        "deg": 41,
+        "gust": 12.31
+    },
+    "clouds": {
+        "all": 0
+    },
+    "dt": 1742423780,
+    "sys": {
+        "country": "MX",
+        "sunrise": 1742391878,
+        "sunset": 1742435439
+    },
+    "timezone": -25200,
+    "id": 4017700,
+    "name": "Baja California",
+    "cod": 200
+}
